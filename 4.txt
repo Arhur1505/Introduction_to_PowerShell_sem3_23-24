@@ -1,0 +1,128 @@
+$ConfirmPreference - High
+$DebuqPreference - SilentlyContinue
+$ErrorActionPreference - Continue
+$MaximumErrorCount - 256
+$VerboosePreference - SilentlyContinue
+$WarningPreference - Continue
+
+@" 
+napisy
+napisy 
+"@
+
+@" 
+Write-Error "2.error"
+Write-Wraning "3.warning
+Write-Verbose "4.dokładny opis akcji"
+Write-Debug "5.debug" -Debug
+Write-Host "6.direct to host"
+Remove-Item C:\Users\student18\Tmp\*.tmp - Verbose 
+"@ > nazwa.ps1
+.\nazwa.ps1 > zawartosc.txt
+
+Get-Command -Verb write
+
+for ($I = 1; $I -le 100; $I++)
+{ $seconds=(100-$I)*0.9;
+Write-Progress -Activity "Search in progress" `
+-Status "$I% complete" -PercentComplete $I `
+-SecondsRemaining "$seconds" ; `
+sleep 0.9}
+
+$DebugPreference
+Write-Debug "Cannot open file."
+Write-Debug "Cannot open file." -Debug
+$DebugPreference = "Continue"
+Write-Debug "Cannot open file."
+
+$InformationPreference 
+Write-Information -MessageData "cos dla usera" 
+Write-Information -MessageData "cos dla usera" -InformationAction Continue
+$InformationPreference = "Continue"
+Write-Information -MessageData "cos dla usera"
+
+Write-Host (2,4,6,7,10) -Separator "->" `
+-ForegroundColor red -BackgroundColor white
+
+Write-Error -Message "Access denied"
+
+(Write-Output @(1,2,3) | measure).count
+(Write-Output @(1,2,3) -NoEnumerate | measure).count
+
+$WarningPreference
+Write-Warning "To jest tylko proba"
+$WarningPreference = "SilentlyContinue"
+Write-Warning "To jest tylko proba"
+$WarningPreference = "Stop"
+Write-Warning "To jest tylko proba"
+
+$VerbosePreference
+Write-Verbose "kopiowanie plików"
+$VerbosePreference = "Continue"
+Write-Verbose "kopiowanie plików"
+
+Get-Volume
+Get-PSDrive
+Get-PSProvider
+dir env: (dir A:)
+
+dir variable:
+
+function abc_moja
+{
+Write-Output "Hello World"
+}
+. .\abc_moja.ps1
+dir function: | more
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

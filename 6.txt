@@ -1,0 +1,98 @@
+$myAge=30
+if ($myAge -ge 18) {
+"Adult"
+} else {
+"Minor"
+}
+
+if(Test-Connection www.google.com -Quiet) {
+Write-Host "Internet connection is live"
+} elseif (Test-Connection 192.168.0.1 -Quiet) {
+Write-Host "------"
+} else {
+Write-Host "......"
+}
+
+switch ((Get-Date).DayOfWeek)
+{
+    "Saturday" {"Weekend"}
+    "Sunday" {"Weekend"}
+    Default {"Weekday"}
+}
+
+$liczba=2
+switch ($liczba)
+{
+    1 {" `$liczba = 'jeden' "}
+    2 {" `$liczba = 'dwa' "}
+    3 {" `$liczba = 'trzy' "}
+    Default { 'nieznana $liczba' }
+}
+
+$a=2
+$liczba = switch ($a)
+{
+    1 { 'jeden' }
+    2 { 'dwa' }
+    3 { 'trzy' }
+    Default { 'nieznane $a' }
+}
+
+$a='wtorek'
+$dzien = switch ($a)
+{
+    poniedzialek { '1' }
+    wtorek { '2' }
+    sroda { '3' }
+    Default { 'nieznane $a' }
+}
+
+$errlog = 'V:\errorlog.txt'
+
+switch -File $errlog
+{
+    10 { "Error ten found"; break }
+    50 { "Error fifty found"; break  }
+    100 { "Error one hundred found"; break }
+    Default { 'nieznany blad' }
+}
+
+Get-Timezone -ListAvailable | ? DisplayName -match "Warsaw"
+? - WhereObject
+
+Set-Timezone `
+-Id "Central European Standard Time"
+
+Get-Date 
+Get-Date "04/23/2021 5:52 PM"
+
+Set-Date -Date (Get-Date).AddHours(15)
+
+Get-Command -verb out
+
+Out-Deafault, Out-File, Out-GridView, Out-Host, Out-Null, Out-Printer, Out-String
+
+$a = Get-Process
+Out-File -FilePath c:\test.txt `
+-InputObject $a -Encoding ASCII -Width 50
+
+Get-Process | Select-Object 
+
+Invoke-Command -ComputerName manager.manager2.test-dcl -ScriptBlock {Get-Culture} | Out-GridView
+
+Get-ChildItem C:\windows\ |more
+Get-Object
+Get-Member
+
+Get-ChildItem | Get-Member
+Get-ChildItem | Sort-Object
+
+Get-Unique
+Get-Content | Tee-Object -FilePath .\test.txt | more
+Group-Object
+Get-Service | Group-Object status
+
+Get-ChildItem | Sort-Object legth -Descending | Select-Object -Frist 3
+Get-Process | Select-Object Name.Length | Formal-List
+
+Test-WSMan 149.156.110.161

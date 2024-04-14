@@ -1,0 +1,83 @@
+Get-PSDrive: litery/nazwy dysku
+dir Cert: drzewo bazy certyfikatów
+dir HKCU:drzwo bazy rejestru
+Get-Volume
+Get-PSProvider
+Get-PSDrive
+    dir C:
+        dir variable:
+            dir function:
+                dir env:
+Get-Help Get-Process -showwindow
+Get-Help -Name
+Get-Help about
+Get-Alias | where{$_.Name -like "where*"
+Get-Alias | Where-Object {$_.Name -like "where*"
+wildcards
+PS V:\ise
+ise 
+ctr + alt + shift + ?
+%userprofile%=C:\Users\wawszcza
+%userprofile%\AppData\Roaming\Microsoft\Windows\PoerShell\PSReadline\ConsoleHost_history.txt
+Get-History | Where-Object {$_.CommandLine -Like "*abc*"}
+Get-History -Id 47 -count 3
+alias: r -> Invoke-History = Get-History Invoke-History -ID nr
+ctr + r
+ctr + s
+Get-PSReadlineOption
+Set-PSReadLineOption -MaximumHistoryCount 1000
+Set-PSReadLineOption -ContinuationPromp "<>"
+Intall-Module PSReadLine
+Measure-Command { Start-Sleep 10 }
+Read-Host -Prompt "Press any key to continue"
+timeout /t 3
+For ($i=0; $i -le 10; $i++) {
+    "10 * $i = " + (10 * $i)
+    }
+    
+$colors = @("Red", "Yellow", "Orange", "Green", "Blue")
+For ($i=0; $i -le $colors.Length; $i++) {
+    $colors[$i]
+    }
+    
+$ary = 1..3
+Foreach ( $i in $ary )
+    { " `$i equals $i '}
+Write-Host -BackgroundColor Magenta`
+        Koniec 'ForEach'
+        
+1..5 | Foreach-Object { $_ } 
+    
+ForEach-Object
+While-Until
+$i=1
+Do {
+$i
+$i++
+}
+while($i -le 9)
+    
+-eq -ne -lt -le -gt -ge
+-Like / -NotLike
+-eq / -or
+array / -NotContains
+if - elseif - else
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+

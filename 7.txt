@@ -1,0 +1,117 @@
+przekazywanie paramterów - metody
+
+pozycyjne (positional)
+nazwane (named)
+przełącznik (switch)
+
+dynamiczne {warunkowe}
+
+function [<scope:>]<name> [([type]$parameter1[,[type]$parameter2])]
+{
+  param([type]$parameter3 [,[type]$parameter4])
+  dynamicparam {<statement list>}
+  
+  begin {<statement list>}
+  process {<statement list>}
+  end {<statement list>}
+  clean {<statement list>}
+}
+
+warunkowe lub dynamiczne 
+    - poza zestawem parametrów
+   
+parametr działa tylko w określonej sytuacji 
+    - przy pewnej wartości innego parametru
+    - kiedy inny paramter będzie użyty
+    
+Function Get-Order1{
+    [CmdletBinding()]
+    param(
+        [Parameter(
+            Mandatory=$true,
+            Position=1,
+            HelpMessage="How many cups would you like to purchase?"
+        )]
+        [int]$cups,
+        
+        [Parameter(
+            Mandatory=$false,
+            Position=2,
+            HelpMessage="What would you like to purchase?"
+        )]
+        [ValidateSet("Lemonade","Water","Tea","Coffee")]
+        [string]$product="Lemonade"
+    )
+
+    Begin {
+        if($PSBoundParameters.age -and $PSBoundParameters.wiek -lt 21){
+            Write-Error "You are not old eough!" - ErrorAction Stop
+        }
+    }
+
+    Process{
+      $order=@()
+      for($cup=1; $cup -le $cups; $cup++){
+          $order+="$($cup): A cup of $($product)"
+      }
+      $order
+    }
+
+    DynamicParam{
+    if($product -eq "Hard Lemonade"){
+         $wiekAttribute=New-Object System.Managment.Automation.ParameterAttribute
+         $wiekAttribute.Position=3
+         $wiekAttribute.Mandatory=$true
+         $wiekAttribute.HelpMessagee="Please enter your age:"
+
+         $attributeCollection = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
+         $attributeCollection.Add($wiekAttribute)
+
+         $wiekParam=New-Object System.Management.Automation.RuntimeDefinedParameter('wiek'[Int16],$attributeCollection)
+         $paramDictionary=New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
+         $paramDictionary.Add('wiek', $wiekParam)
+
+         return $paramDictionary
+      }
+    }
+}
+
+152 dc student152\administrator P@ssw0rd$
+150 dc student150\administrator P@ssw0rd@
+
+$c152=(Get-Credential student152\administrator)
+$c150=(Get-Credential student150\administrator)
+
+Invoke-Command -scriptblock {Get-Culture} -computername 152dc -credential $c152
+
+Enter-PSSession -computername 152dc -credential $c152
+
+ipconfig
+dir env:\computername
+
+$s150=New-PSSession -computername 150dc -credential $c150
+$s152=New-PSSession -computername 152dc -credential $c152
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+

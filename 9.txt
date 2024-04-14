@@ -1,0 +1,4 @@
+IP=10.128.128.90
+Enter-PSSession -Computerbane core0x -Credential (Get-Credential test\student18)
+Get-VM 18de | Start-VM
+Enter-PSSession -VMName 18de -Credential (Get-Credential administrator)

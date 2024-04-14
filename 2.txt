@@ -1,0 +1,60 @@
+rdesktop -d fiz -u student18 149.156.110.11
+
+Get-Command | Get-Member | more
+Get-Command | Get-Member | more
+Get-Command | select [items] | Format-Table | more
+
+Zmiennę:
+$$ - ostatni element poprzedniej instrukcji
+$^ - pierwszy element ...j.w
+$? - kod błędu ostatniej instukcji
+$PID - proces id
+$PWD - pwd w linuxie
+$_=$PSItem - bieżący obiekt potoku
+$Args - tabela niezadeklarowanych w funkcji parametrów
+$Error - tabela błędów
+$False, $True, $null - 
+$Home - katalog domowy
+$PSHome - katalog w którym zainstalowano powershella
+
+get-process | where {$_.name -eg "svchost"}
+$m=$$
+$mp
+
+$PID = get-process | where {$_.name -eg "powershell"}
+$PID = get-process | where {$_.id -eg "[id]"}
+
+$MaximumAliasCount
+$MaximumDriveCount
+$MaximumErrorCount
+$MaximumFunctionCount
+$MaximumHistoryCount
+$MaximumVariableCount
+$WhatIfPreference - zakaz wykonywania instrukcji, informuje co zrobi instrukcja
+
+$WhatIfPreference=%true
+notepad
+get-process notepad | Stop-Process - nie wykona się bo WhatIfPreference=$true
+
+Typy:
+string, char, byte, int, long, bool, decimal, single, double, DateTime, xml, array, hashtable
+
+$a=5 ; $a | Get-Member - system sam wybiera typ na int
+$a=3.1415 ; $a | Get-Member - system sam zmienia typ na double
+
+$PSVersionTable.PSVersion
+Get-Host
+Get-Host | Select-Object Version
+
+ping
+ipconfig
+netsh
+net use
+net share
+nslookup
+arp
+getmac
+netstat
+tracert
+whoiam
+cd, dir, help, pushd, popd

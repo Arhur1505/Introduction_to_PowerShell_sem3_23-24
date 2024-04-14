@@ -1,0 +1,47 @@
+$c158=(Get-Credential student158\administrator)
+$c157=(Get-Credential student157\administrator)
+
+Enter-PSSession -computername 158dc -credential $c158s
+nslookup 158dc
+nslookup student158
+
+$s158dc=New-PSSession -computername 158dc -credential $c158
+$s158manager=New-PSSession -computername 158manager -credential $c158
+Invoke-Command -Session $s158dc, $s158manager -ScriptBlock {Get-Host}
+
+Get-PSSesion
+Enter-PSSession -id ID
+Remove-PSSession -id ID
+
+$wielo=New-PSSession -computername 158dc, 158manager -credential $c158
+
+notepad hello.ps1       "Hello World!"
+Invoke-Command -Session $wielo -FilePath .\hello.ps1
+
+$cred=(Get-Credential)
+Enter-PSSession -ComputerName n_hosta1 -Credential $cred
+
+Enter-PSSession -id ID
+
+$sesja2=New-PSSession -computername 158dc
+Invoke-Command -Session $sesja2 -SriptBlock {$services=(Get-Service)}
+Invoke-Command -Session $sesja2 -SriptBlock {$services | Where-Object {$_.status -eq "Running"}}
+Remove-PSSession $sesja2
+
+dir -Recursive
+dir C:\* -Include *.txt,*.log -Exclude a* | Sort-Object Length -Descending
+
+$Directory="C:\Users\student18"
+$Phrase="Error"
+$Files=Get-Childitem $Directory -Recurse -Include *.txt -ErrorAction SilentlyContinue
+$Files | Select-String $Phrase | Group-Object Filename | Sort-Object count -Descending
+
+Get-Service | Group-Object status
+Get-Service | Group-Object Verb | Sort-Object count -Descending
+New-Item -type File zrodlo18.txt -name zrodloID.txt
+
+Copy-Item "zrodlo_lokalne" "zdalny_katalog_docelowy" -ToSession $session
+Copy-Item "zrodlo_na_zdalnym_hoscie" "katalog_docelowy" -FromSession $session
+
+Rename-Item -Path "C:\plik" -NewName "Nowa_nazwa"
+Get-ChildItem *.txt | Rename-Item -NewName {$_.name -Replace '.txt','.log'}

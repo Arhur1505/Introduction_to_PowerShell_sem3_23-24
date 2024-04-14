@@ -1,0 +1,82 @@
+$m=Get-Alias | Measure-Object
+$m.count
+$m=Get-Alias | Tee-Object -Variable | Measure-Object
+$m$
+$aliasy_lista | more
+${aliasy_lista | more
+($m=Get-Alias | Measure-Object).count
+a=`uname` - bash
+($m=Get-Command | Measure-Object).count
+Get-Alias | Measure | % { $_.count}
+% - ForEach-Object
+? - Where-Object
+where - Where-Object
+select - Select-Object
+echo - Write-Output
+kill - Stop-Process
+cat - Get-Content
+cp - Copy-Item
+Get-Help
+Get-Alias
+Get-Command
+Get-Command * | more
+notepad C:\Users\studnet18\AppData\Roaming\Microsoft\
+Windows\PowerShell\PSReadline\Console_history.txt
+xcopy
+komenda /? - pomoc
+/S subfoldery
+/H ukrytr systemowe subfoldery lub pliki
+/R usuwanie atrybuty read-only
+/E też puste foldery
+/exclude
+/-Y powoduje żadanie potwierdzenia nadsywania
+/V odwołuje żądanie potwierdzenia
+/I jeśli miejsce docelowe nie istnieje, a kopiowanych jest więcej plików niż
+jeden, przyjmuje, że miejsce docelowe na pewno jest katalogiem
+/D:03-31-2021 kopiuje pliki od tej daty
+Copy-Item src dest -Force -Recurse -Verboose
+[int32]$zmienna = 20
+$website = "www.agh.edu.pl"
+$myString = "My favorite website is " + $website
+[ int[] ]$e = 1,2,3,4,5,6,7,8
+$kolejne | Measure-Object -Sum -Average - Maximum -Minimum -Verboose
+$colory = @("black","white","yellow","blue")
+(Get-Process) -is [array]
+$procesy=(Get-Process)
+$mac = Get-NetAdapter | select MacAdress
+$colory = $colory + "orange"
+$colory = $colory | Sort-Object
+$colory.length
+$states = @{"Washigton" = "Olympia"; "Oregon" = "Salem"}
+$states.Add("Alaska","Fairbanks")
+$states.Item("Alaska","Juneau")
+$states.Remove("Alaska")
+$states.Get_Item("Oregon")
+$states | Measure-Object
+$states | Sort-Object
+$states.GetEnumerator() | Sort-Object Name/Value
+komenda 1> wynik.txt 2> error
+komenda 1>> wynik.txt
+scp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
